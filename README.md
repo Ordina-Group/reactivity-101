@@ -32,3 +32,4 @@ Imperatief vs declaratief
 ### TODOS
 
 - Checken of er een browser api bestaat / events als alternatief?
+- Computed() toegoeven aan custom signal implementatie

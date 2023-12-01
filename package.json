@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "reveal-md": "^5.5.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }
