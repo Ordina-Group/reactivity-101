@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signal example</title>
+  </head>
+  <body>
+    <div id="counter">0</div>
+    <button id="increase">+</button>
+  </body>
+  <script>
+    const count = new Signal(0);
+
+    document
+      .getElementById("increase")
+      .addEventListener("click", count.set(count.value + 1));
+
+    count.observe(
+      (newCount) => (document.getElementById("counter").innerHTML = newCount)
+    );
+  </script>
+</html>
