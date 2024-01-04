@@ -231,7 +231,48 @@ Note: Point 3: WriteableSignal vs. ComputedSignal.
 
 ### But what does a Signal do then?
 
-Note: Let's discuss what a Signal does. How the API's differ perhaps?
+- Holds a (initial) state value
+- Receives and stores state changes
+- Returns current state on demand
+- Keeps track of all listeners
+- Informs all listeners on state changes
+
+---
+
+### Exercise 1
+
+Write your own Signal!
+
+Note: Take 20 minutes for this by default. Depending on the group; discuss approach first, or give hints.
+
+----
+
+Hints
+- https://angular.dev/guide/signals#writable-signals
+
+```ts
+interface Signal<T> {
+  constructor(initialValue: T): void
+  setValue: (newValue: T) => void
+  getValue: () => T
+  getValue: (callback: (value: T) => void) => void;
+}
+```
+
+----
+
+Recommended steps:
+
+1. Wrap the value
+2. Be able to unwrap and retrieve the value
+3. Be able to set and/or update the value
+4. Add and keep track of (new) listeners
+
+Bonus step: computed()
+
+---
+
+Link met frameworks, change detection, compiler hints ...
 
 ---
 
