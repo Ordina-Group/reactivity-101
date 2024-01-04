@@ -111,4 +111,39 @@ Note: React uses hooks to connect the state value updates to the UI and update i
 
 ### But what does a Signal do then?
 
-Note: Let's discuss what a Signal does. How the API's differ perhaps?
+- Holds a (initial) state value
+- Receives and stores state changes
+- Returns current state on demand
+- Keeps track of all listeners
+- Informs all listeners on state changes
+
+---
+
+### Exercise 1 - 20 min
+
+Write your own Signal!
+
+Hints
+- https://angular.dev/guide/signals#writable-signals
+
+```ts
+interface Signal<T> {
+  constructor(initialValue: T): void
+  setValue: (newValue: T) => void
+  getValue: () => T
+  getValue: (callback: (value: T) => void) => void;
+}
+```
+
+Waarde wrappen + ophalen dmv evaluatie
+Waarde zetten/updaten
+Aanmelden / bijhouden luisteraars
+
+Bonus: computed
+
+---
+
+Link met framewokrs, change detection, compiler hints ...
+
+---
+

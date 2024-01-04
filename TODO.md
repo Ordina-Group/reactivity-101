@@ -2,10 +2,6 @@ kernwoorden hoofdstukjes
 pros en cons beschrijven, jatten uit rxjs
 computed() voorbeeld in signal.class werkt nog niet helemaal correct
 
-signal ontleden + eigen schrijven
-
-2e signal voorbeeld
-
 Opdrachten:
 
 1. signal schrijven
