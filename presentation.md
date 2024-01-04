@@ -1,5 +1,5 @@
 ---
-title: 'Bing bong'
+title: 'Reactive Programming in the Frontend'
 ---
 
 # Reactivity 101
@@ -34,7 +34,6 @@ document.getElementById("counterPlus")
 })
 ```
  
-Note: Regular variable being updated on click.
 
 ```html
 <div>
@@ -43,6 +42,8 @@ Note: Regular variable being updated on click.
 	<button class="counterPlus">+</button>
 </div>
 ```
+
+Note: Regular variable being updated on click. This is not reactive.
 
 ---
 
