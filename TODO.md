@@ -1,4 +1,3 @@
-react voorbeeld
 kernwoorden hoofdstukjes
 pros en cons beschrijven, jatten uit rxjs
 

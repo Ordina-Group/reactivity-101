@@ -19,11 +19,6 @@ class Signal<T> {
   }
 
   set(value: T) {
-    // FIXME: this doesnt work with arrays
-    // if (Object.is(value, this._value)) {
-    //   return;
-    // }
-
     this._value = value;
     this._subscribers.forEach((s) => s.notifySubscriber(this._value));
   }
