@@ -218,8 +218,3 @@ Note: Let's discuss what a Signal does. How the API's differ perhaps?
 
 ---
 
-kernwoorden hoofdstukjes
-
----
-
-pros en cons beschrijven, jatten uit rxjs
