@@ -76,7 +76,7 @@ Propagation of Changes
 **Declarative**
 
 ```js
-var count = 0;
+let count = 0;
 
 function render() {
 	document.getElementById("counter").innerHTML = count;
@@ -138,6 +138,18 @@ Note: A declarative example. We write the "recipe" and every definition has its 
 **Data Streams**
 
 You could consider a Signal to be a stream of values that change over time. 
+
+```ts
+count = signal(0)
+
+// User clicks a button
+count.update(value => value + 1)
+// Count is now 1.
+
+// User clicks again (count: 2)
+// User may wait for a bit... (count: 2)
+// User clicks *again* (count: 3)
+```
 
 ----
 
