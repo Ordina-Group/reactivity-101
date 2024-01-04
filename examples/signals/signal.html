@@ -1,3 +1,10 @@
+<!-- 
+  Signal example usage in combination with DOM manipulation.
+  You can run this example like this:
+
+  npm run start:signal-example
+ -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,15 +14,17 @@
     <div id="counter">0</div>
     <button id="increase">+</button>
   </body>
+  <script src="./signal-as-class-with-computed.js"></script>
   <script>
+    // this uses the implementation from signal-as-class-with-computed.ts
     const count = new Signal(0);
 
-    document
-      .getElementById("increase")
-      .addEventListener("click", count.set(count.value + 1));
+    document.getElementById("increase").addEventListener("click", () => {
+      count.set(count.value + 1);
+    });
 
-    count.observe(
-      (newCount) => (document.getElementById("counter").innerHTML = newCount)
-    );
+    count.observe((newCount) => {
+      document.getElementById("counter").innerHTML = newCount;
+    });
   </script>
 </html>

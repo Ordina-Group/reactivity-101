@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "reveal-md ./presentation.md",
+    "start:signal-example": "npm run build:signal-example && open ./examples/signals/signal.html",
+    "build:signal-example": "tsc ./examples/signals/signal-as-class-with-computed.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
