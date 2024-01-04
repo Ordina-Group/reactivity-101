@@ -1,0 +1,28 @@
+<!-- 
+  Signal example usage in combination with DOM manipulation.
+  You can run this example like this:
+
+  npm run start:signal-example
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signal example</title>
+    <script src="./signal-as-class-with-computed.js"></script>
+    <script>
+      // this uses the implementation from signal-as-class-with-computed.ts
+      const count = new Signal(0);
+
+      count.observe((newCount) => {
+        document.getElementById("counter").innerHTML = newCount;
+      });
+    </script>
+  </head>
+  <body>
+    <div id="counter">0</div>
+    <button id="increase" onclick="(() => count.set(count.value + 1))()">
+      +
+    </button>
+  </body>
+</html>

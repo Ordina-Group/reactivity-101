@@ -89,6 +89,26 @@ Note: Angular in this example, takes care of subscribing to your counter signal 
 
 ----
 
+### React example
+
+```tsx
+const Component = () => {
+  const [counter, setCounter] = useState(0);
+  return (
+    <>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+	  	  +
+	    </button>
+    </>
+  );
+};
+```
+
+Note: React uses hooks to connect the state value updates to the UI and update it automatically when the state changes.
+
+----
+
 ### But what does a Signal do then?
 
 Note: Let's discuss what a Signal does. How the API's differ perhaps?
