@@ -151,6 +151,8 @@ count.update(value => value + 1)
 // User clicks *again* (count: 3)
 ```
 
+Note: This is a basic visualisation on how a value might change over time, representing a stream of data. We'll come back to this in the RxJS part.
+
 ----
 
 **Propagation of Change**
