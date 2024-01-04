@@ -209,6 +209,9 @@ Of Signals
 
 - No real "value over time", only a current state.
 - Slightly more complicated API for changing values.
+- Not every Signal is the same; some are writeable, some are only calculated.
+
+Note: Point 3: WriteableSignal vs. ComputedSignal.
 
 ---
 
