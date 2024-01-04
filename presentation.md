@@ -189,7 +189,28 @@ const Component = () => {
 
 Note: React uses hooks to connect the state value updates to the UI and update it automatically when the state changes.
 
+---
+
+## Pros & Cons
+
+Of Signals
+
 ----
+
+## Pros
+
+- Always up to date state of a value
+- No need to notify or be aware of other parts of the application
+- More declarative approach is possible
+
+----
+
+## Cons
+
+- No real "value over time", only a current state.
+- Slightly more complicated API for changing values.
+
+---
 
 ### But what does a Signal do then?
 
