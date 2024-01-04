@@ -239,9 +239,13 @@ Note: Point 3: WriteableSignal vs. ComputedSignal.
 
 ---
 
-### Exercise 1 - 20 min
+### Exercise 1
 
 Write your own Signal!
+
+Note: Take 20 minutes for this by default. Depending on the group; discuss approach first, or give hints.
+
+----
 
 Hints
 - https://angular.dev/guide/signals#writable-signals
@@ -255,15 +259,20 @@ interface Signal<T> {
 }
 ```
 
-Waarde wrappen + ophalen dmv evaluatie
-Waarde zetten/updaten
-Aanmelden / bijhouden luisteraars
+----
 
-Bonus: computed
+Recommended steps:
+
+1. Wrap the value
+2. Be able to unwrap and retrieve the value
+3. Be able to set and/or update the value
+4. Add and keep track of (new) listeners
+
+Bonus step: computed()
 
 ---
 
-Link met framewokrs, change detection, compiler hints ...
+Link met frameworks, change detection, compiler hints ...
 
 ---
 
