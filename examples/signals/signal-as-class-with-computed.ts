@@ -1,4 +1,10 @@
-// npx ts-node ./signals/signal.class.ts
+/*
+  This is an example Signal implementation inspired by the Observable pattern but using a Class for a nicer API.
+  It also contains a computed() helper to compose and / or derive values from one ore more Signals.
+  You can run this example like this:
+  
+  npx ts-node ./examples/signals/signal-as-class-with-computed.ts
+*/
 
 type Subscriberr<T> = {
   id: string;
@@ -55,19 +61,6 @@ function computed<T>(callback: (input: T[]) => T, dependencies: Signal<T>[]) {
   return innerSignal;
 }
 
-// const myValue = new Signal("Hello");
-// const subscription = myValue.observe((a) => console.log(`in subscribe: ${a}`));
-
-// console.log(myValue.value);
-
-// myValue.set("Hi there");
-// console.log(myValue.value);
-
-// subscription.unsubscribe();
-
-// myValue.set("should not notifiy");
-// console.log(myValue.value);
-
 const signal1 = new Signal("signal1");
 const signal2 = new Signal("signal2");
 
@@ -81,5 +74,4 @@ const derived = computed(
 derived.observe(console.log);
 
 signal2.set("signal2 changed");
-
 signal1.set("signal1 changed");
