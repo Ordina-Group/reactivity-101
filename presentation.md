@@ -114,7 +114,7 @@ Note: Imagine we add another button that influences how the counter changes. The
 **Declarative**
 
 ```ts
-// Pseudo-future Angular
+// Angular 17.1+
 class ListComponent {
   list = input([]);
   emptyHeading = input('');
@@ -259,6 +259,8 @@ interface Signal<T> {
 }
 ```
 
+Note: This is just an example, feel free to create your own API!
+
 ----
 
 Recommended steps:
@@ -270,9 +272,44 @@ Recommended steps:
 
 Bonus step: computed()
 
----
-
-Link met frameworks, change detection, compiler hints ...
+Note: After this exercise, take a look around. Show & Tell and discussion about the different approaches, did we get it to work?
 
 ---
 
+Note: // TODO - Do we do exercise 2 before this? Or after this? Should be easy enough to switch out to a stackblitz with a framework of choice?
+
+## Frameworks
+
+Note: Now you've written a (partial) signal yourself, you can imagine the complications it involves. And why every framework has their own. 
+
+----
+
+### Change Detection
+
+Note: Frameworks keep track of Signals and their usage for you, so it knows when to trigger change detection and keep things like two-way binding working.
+
+----
+
+### Compiler hints
+
+Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This tells the compiler that this value is not just a value, and tracks wherever the value is used, to tie that in with any changes of the value. (Angular sort of uses Signals as a compiler hint too for the template compiler).
+
+----
+
+... // TODO Add more.
+
+---
+
+## Signal usage
+
+When do you use a Signal?
+
+Should we make every value a Signal?
+
+Note: Discuss. 
+
+----
+
+// TODO More to brief? Where to draw the line? When to combine/group values in an Object and use that in the signal. This is more state management then "Signals"...
+
+// TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
