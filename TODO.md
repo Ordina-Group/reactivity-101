@@ -7,6 +7,7 @@ Opdrachten:
 3. Dan de brug naar frameworks, stil staan bij wat ze allemaal doen onderwater voor je.
    1. Two-way binding tussen Signal en HTML
    2. Geen handmatige "document.getElementById()" achtige zaken.
+   [ ] Create exercise 2 example
 4. Gebruik van Signals
    1. Wanneer wel, wanneer niet.
    2. Samenstellen van waardes in een Signal ( {} ) ?
