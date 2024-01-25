@@ -6,7 +6,7 @@
   npx ts-node ./examples/signals/signal-as-class-with-computed.ts
 */
 
-type Subscriberr<T> = {
+type Subscriber<T> = {
   id: string;
   notifySubscriber: (val: T) => void;
 };
@@ -16,7 +16,7 @@ function generateRandomId() {
 }
 
 class Signal<T> {
-  private _subscribers: Subscriberr<T>[] = [];
+  private _subscribers: Subscriber<T>[] = [];
 
   constructor(private _value: T) {}
 
@@ -44,34 +44,32 @@ class Signal<T> {
   }
 }
 
-function computed<T>(callback: (input: T[]) => T, dependencies: Signal<T>[]) {
-  const innerSignal = new Signal(dependencies.map((s) => s.value));
+type Input<T> = {
+  [K in keyof T]: T[K];
+};
 
-  dependencies.forEach((signal, index) => {
-    signal.observe((val) => {
-      const currValue = innerSignal.value;
-      currValue[index] = val;
+type InputSignal<T> = {
+  [K in keyof T]: Signal<T[K]>;
+};
 
-      innerSignal.set(currValue);
+function computed<A extends unknown[], R>(
+  getComputedValue: (...values: Input<A>) => R,
+  dependencies: [...InputSignal<A>]
+): Signal<R> {
+  const resultSignal = new Signal<R>(null as R);
 
-      callback(currValue);
+  dependencies.forEach((signal) => {
+    signal.observe(() => {
+      const latestValues = dependencies.map((s) => s.value);
+      resultSignal.set(getComputedValue(...(latestValues as [...Input<A>])));
     });
   });
 
-  return innerSignal;
+  return resultSignal;
 }
 
-const signal1 = new Signal("signal1");
-const signal2 = new Signal("signal2");
+const signal1 = new Signal(1);
+const signal2 = new Signal(2);
 
-const derived = computed(
-  ([a, b]) => {
-    return `${a}+${b}`;
-  },
-  [signal1, signal2]
-);
-
-derived.observe(console.log);
-
-signal2.set("signal2 changed");
-signal1.set("signal1 changed");
+const multiply = computed((a, b) => a + b, [signal1, signal2]);
+const sum = computed((a, b) => a + b, [signal1, signal2]);
