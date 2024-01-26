@@ -4,7 +4,9 @@
 
 Try to use and consume your Signal.
 - Can you set a value? 
-- Can you change the value over time? 
-  - On user action? 
+- Can you change the value over time? (`setInterval`, `setTimeout`)
+  - On user action? `<button> ?`
 - Can you make a counter? 
 - Can you reflect the changes in the HTML when the Signal changes?
+
+The most basic example and exercise here would be to write a counter example either using buttons or incrementing every second.

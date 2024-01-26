@@ -270,17 +270,34 @@ Recommended steps:
 3. Be able to set and/or update the value
 4. Add and keep track of (new) listeners
 
-Bonus step: computed()
-
 Note: After this exercise, take a look around. Show & Tell and discussion about the different approaches, did we get it to work?
 
 ---
 
-Note: // TODO - Do we do exercise 2 before this? Or after this? Should be easy enough to switch out to a stackblitz with a framework of choice?
+## Exercise 2
+### Signal Interaction
 
-## Frameworks
+Now let's try to use the Signal. 
+
+Note: // TODO - Explanation, hints, bonus
+
+---
+
+## Review exercise 2
+
+Note: Show & Tell, what worked, what was difficult? Optionally show an example solution. // TODO - Create example solution exercise 2.
+
+---
+
+## What do frameworks do for us?
 
 Note: Now you've written a (partial) signal yourself, you can imagine the complications it involves. And why every framework has their own. 
+
+----
+
+### Two-way binding
+
+Note: Keeping values in sync between components/services and the HTML/DOM.
 
 ----
 
@@ -309,6 +326,8 @@ Should we make every value a Signal?
 Note: Discuss. 
 
 ----
+
+Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article talking and touching about these points.
 
 // TODO More to brief? Where to draw the line? When to combine/group values in an Object and use that in the signal. This is more state management then "Signals"...
 
