@@ -6,6 +6,31 @@ title: 'Reactive Programming in the Frontend'
 
 ---
 
+<div style="float: left; width: 45%;">
+  <img src="./assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Bjorn Schijff</h1>
+  <small style="display: inline-flex;">Frontend Engineer / Architect</small>
+  <div>
+  	<img src="./assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
+  </div>
+  <small>@Bjeaurn</small>
+  <br />
+  <small>bjorn.schijff@ordina.nl</small>
+</div>
+<div style="float: right; width: 45%;">
+  <img src="./assets/martin.jpg" width="100" style="border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Martin van Dam</h1>
+  <small>Frontend Engineer / Architect</small>
+  <div>
+    <img src="./assets/codestar.svg" height="30" style="border: 0; background-color: transparent; position: relative" /> 
+  </div>
+  <small>@MrtnvDam</small>
+  <br />
+  <small>martin.van.dam@ordina.nl</small>
+</div>
+
+---
+
 What is Reactivity?
 
 Note: What is reactivity? What is reactive programming?
@@ -167,6 +192,8 @@ Note: So you can focus on the business logic, not the two-way binding. But the s
 
 ----
 
+### Angular example
+
 ```ts
 @Component({
 	...
@@ -297,11 +324,15 @@ Note: Now you've written a (partial) signal yourself, you can imagine the compli
 
 ### Two-way binding
 
+Reflect state changes in the HTML/DOM.
+
 Note: Keeping values in sync between components/services and the HTML/DOM.
 
 ----
 
 ### Change Detection
+
+Keeps track of state changes and updates all the parts using the state value.
 
 Note: Frameworks keep track of Signals and their usage for you, so it knows when to trigger change detection and keep things like two-way binding working.
 
@@ -309,11 +340,41 @@ Note: Frameworks keep track of Signals and their usage for you, so it knows when
 
 ### Compiler hints
 
+// TODO: not sure how to explain this
+
 Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This tells the compiler that this value is not just a value, and tracks wherever the value is used, to tie that in with any changes of the value. (Angular sort of uses Signals as a compiler hint too for the template compiler).
 
-----
+---
 
-... // TODO Add more.
+## Different types of Signals
+
+// TODO: discuss if this is the correct timing
+// TODO: maybe add code examples?
+
+- Writable
+- Computable
+- Effects
+
+---
+
+## Exercise 3
+### Signals within framworks
+
+- Angular exercise
+- React exercise
+
+// TODO: let the participant decide on Angular or React? And discuss the differences afterwards?
+
+---
+
+## Review exercise 3
+
+- Signals vs. Hooks
+- No manual DOM manipulation needed
+- Uses the "brains" of the framework to decide when state reflection is needed
+- Great developer experience
+
+Note: Ask participants to explain their solution (one of each). Show the group the difference between Angular and React.
 
 ---
 
@@ -323,7 +384,29 @@ When do you use a Signal?
 
 Should we make every value a Signal?
 
-Note: Discuss. 
+Note: Discuss, ask group about when to use a Signal and when not to use it.
+
+----
+
+## When to use a Signal?
+
+- ...
+- ...
+- ...
+
+----
+
+## When to NOT use a Signal?
+
+- Handling (user events)
+- Values over time (streams)
+- Continous stream of data (chats)
+
+----
+
+## Wait?! What should I use then???
+
+... RxJS 🧐
 
 ----
 
@@ -332,3 +415,117 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 // TODO More to brief? Where to draw the line? When to combine/group values in an Object and use that in the signal. This is more state management then "Signals"...
 
 // TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
+
+---
+## What is RxJS?
+
+- Reactive programming in the Frontend
+- A better way to manage data and events within your app.
+
+---
+
+## Why RxJS?
+
+- Better readable code 🤓
+- Data flow 🌊
+- Easier and safer data transformations 🤖
+- Functional and Reactive (!) 🙌
+
+---
+
+## What do you use RxJS for?
+
+- Streaming data, (i.e. WebSockets)
+- Games
+- Communicating between application components
+
+---
+
+#### Streaming data
+
+```ts
+const locationUpdates = webSocket("ws://some-live-shiplocation-api");
+
+locationUpdates.subscribe((newShipLocation) => {
+  // update UI with new location i.e.
+  this.state.shiplocation = newShipLocation;
+});
+```
+
+---
+
+#### Games
+
+```ts
+const ticks = interval(this.tickMs).pipe(map(() => "tick"));
+const frames = interval(this.fpsMs).pipe(map(() => "frame"));
+const seconds = interval(1000).pipe(map(() => "second"));
+
+this.update$ = merge(ticks, frames, seconds).share();
+```
+
+---
+
+#### Communicating between application components
+
+Service
+
+```ts
+export class EventBusService {
+  private events = new Subject<Event>();
+
+  getEvents(): Observable<Event> {
+    return this.events.asObservable();
+  }
+
+  sendEvent(event: Event): void {
+    this.events.next(event);
+  }
+}
+```
+
+---
+
+#### Communicating between application components
+
+// TODO: maybe tell here that Signals are a abstraction / kind of BehaviourSubject? and maybe rewrite example below to use BehaviourSubject instead?
+
+Component
+
+```ts
+export class Component {
+  constructor(private eventsService: EventBusService) {
+    this.eventsService
+      .getEvents()
+      .filter((event) => event.type === "InterestingEvent")
+      .subscribe(this.handleEvents);
+  }
+
+  doAction(): void {
+    this.eventsService.sendEvent(new TestEvent());
+  }
+
+  handleEvents(event: Event) {
+    //... do things
+  }
+}
+```
+
+---
+
+### So, RxJS?
+
+- Implementation of the Observable pattern in Javascript
+- Used heavily by `Angular`
+- Lots of adoption in libraries like
+  - `Redux-observable`
+  - `VueRx`
+- Java/Scala also have their implementation.
+
+#### 🤩 So plenty of stuff to have fun with! 🤩
+
+---
+
+// TODO: add short explaination of basic operators
+// TODO: simple exercise(s) should follow; maybe handling user events, debounce input value changes? To demonstrate the limitations of Signals and the POWAHH of Observables?
+
