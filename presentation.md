@@ -298,7 +298,8 @@ Note: After this exercise, take a look around. Show & Tell and discussion about 
 
 Now let's try to use the Signal. 
 
-Note: // TODO - Explanation, hints, bonus
+Note: // TODO - Explanation, hints, bonus 
+// TODO Bjorn
 
 ---
 
@@ -334,6 +335,8 @@ Note: Frameworks keep track of Signals and their usage for you, so it knows when
 
 // TODO: not sure how to explain this
 
+// TODO Bjorn
+
 Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This tells the compiler that this value is not just a value, and tracks wherever the value is used, to tie that in with any changes of the value. (Angular sort of uses Signals as a compiler hint too for the template compiler).
 
 ---
@@ -344,6 +347,8 @@ Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This
 
 // TODO: maybe add code examples?
 
+// TODO Martin
+
 - Writable
 - Computable
 - Effects
@@ -353,10 +358,7 @@ Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This
 ## Exercise 3
 ### Signals within framworks
 
-- Angular exercise
-- React exercise
-
-// TODO: let the participant decide on Angular or React? And discuss the differences afterwards?
+Note: You may pick if you want to use Angular or React (or both if you're a star!) 
 
 ---
 
@@ -366,6 +368,8 @@ Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This
 - No manual DOM manipulation needed
 - Uses the "brains" of the framework to decide when state reflection is needed
 - Great developer experience
+
+// TODO Bjorn - Exercise 3 solution
 
 Note: Ask participants to explain their solution (one of each). Show the group the difference between Angular and React.
 
@@ -414,6 +418,8 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 
 // TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
 
+// Kan weg??? 
+
 ---
 
 ## What is RxJS?
@@ -429,6 +435,8 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 - What is a Subject?
 
 // TODO - Fix me!
+
+// TODO Martin
 
 ---
 
@@ -453,7 +461,9 @@ locationUpdates.subscribe((newShipLocation) => {
   // update UI with new location i.e.
   this.state.shiplocation = newShipLocation;
 });
-```
+``` 
+
+// TODO Add operator or more "lively" example - Show what we can do more with Rx in comparison. Debounce, Buffer, Filter? 
 
 ---
 <!-- 
@@ -527,6 +537,9 @@ export class Component {
 Note: Will be zoomed in more in the FP Days given by our colleagues. 
 
 ---
+
+// TODO Exercise 5, 6 ? Give an RxJS stream of range 0..100, exercise is to filter only the even values. Show in both RxJS stream (filter) and as a Signal (computed with if statement)
+
 
 // TODO - Bonus?
 // TODO: add short explaination of basic operators
