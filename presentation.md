@@ -473,17 +473,75 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 
 - A better way to manage events within your app.
 - More powerful then Signals, but way more options.
+- Applies the Observable pattern in Javascript.
 
 ---
 
 ## Observable Pattern
 
-- What is an Observable?
-- What is a Subject?
+What is an Observable?
 
-// TODO - Fix me!
+- Datasource*
+- You can subscribe to its contents, much like a newsletter.
+- Unlike a newsletter, it won't send anything until at least someone has a subscription.
+- You can use operators on it, to get the parts you are interested in.
 
-// TODO Martin
+---
+
+```ts
+const someValue$ = from('some value')
+
+someValue$.subscribe(value => {
+  console.log(value) // 'some value'
+})
+```
+
+---
+
+## Observable Pattern
+
+What is a Subject?
+
+- Special type of Observable
+- Value could be changed over time, just like a Signal, but without initial value
+- With all the benefits of an Observable
+
+---
+
+```ts
+const subject$ = new Subject()
+subject$.next('my subject')
+
+setTimeout(() => {
+  subject$.next('new value after 2 seconds')
+}, 2000)
+
+subject$.subscribe(value => {
+  console.log(value) // 'my subject
+})
+```
+
+---
+
+## Observable Pattern
+
+What is a BehaviorSubject?
+
+- Same as Subject, but with initial value
+- Emits the current (initial) value immediately on subscribe
+- Basically a Signal
+
+---
+
+```ts
+const behaviorSubject$ = new BehaviorSubject('initial value')
+
+behaviorSubject$.subscribe(value => {
+  console.log(value) // 'initial value', 'my behavior subject
+})
+
+behaviorSubject$.next('my behavior subject')
+```
 
 ---
 
