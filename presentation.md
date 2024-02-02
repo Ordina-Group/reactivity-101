@@ -101,6 +101,7 @@ Propagation of Changes
 **Declarative**
 
 ```js
+// Imperative - This is how NOT to do it.
 let count = 0;
 
 function render() {
@@ -119,19 +120,10 @@ document.getElementById("counterMin")
 			render() // <-- This again. Oh no, I forgot it?!
 		})
 
-// How do I see how the count is influenced over time?
+// How do I see how the count is influenced over time? 
+// By different parts of the application?
 ```
  
-
-```html
-<div>
-	<span class="counter"></span>
-	
-	<button class="counterMin">-</button>
-	<button class="counterPlus">+</button>
-</div>
-```
-
 Note: Imagine we add another button that influences how the counter changes. The minus example. Now we have two functions, they both influence the same state and have to call the same functions.
 
 ----
