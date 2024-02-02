@@ -71,5 +71,5 @@ function computed<A extends unknown[], R>(
 const signal1 = new Signal(1);
 const signal2 = new Signal(2);
 
-const multiply = computed((a, b) => a + b, [signal1, signal2]);
+const multiply = computed((a, b) => a * b, [signal1, signal2]);
 const sum = computed((a, b) => a + b, [signal1, signal2]);
