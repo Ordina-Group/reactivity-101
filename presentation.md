@@ -298,14 +298,31 @@ Note: After this exercise, take a look around. Show & Tell and discussion about 
 
 Now let's try to use the Signal. 
 
-Note: // TODO - Explanation, hints, bonus 
-// TODO Bjorn
+----
+
+Hints
+
+```html
+<button id="button" onclick="doClick()">Click</button>
+```
+
+```ts
+ // Native browser API's
+document.getElementById('button').addEventListener('click', () => { 
+  // Do things 
+})
+
+function doClick() {
+  // Do things in here.
+}
+
+```
 
 ---
 
 ## Review exercise 2
 
-Note: Show & Tell, what worked, what was difficult? Optionally show an example solution. // TODO - Create example solution exercise 2.
+Note: Show & Tell, what worked, what was difficult? Optionally show an example solution.
 
 ---
 
@@ -333,9 +350,9 @@ Note: Frameworks keep track of Signals and their usage for you, so it knows when
 
 ### Compiler hints
 
-// TODO: not sure how to explain this
+Some frameworks and libraries use Signals as a hint for the compiler to know where to optimize.
 
-// TODO Bjorn
+<small>(For example Svelte, https://svelte.dev/blog/runes)</small>
 
 Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This tells the compiler that this value is not just a value, and tracks wherever the value is used, to tie that in with any changes of the value. (Angular sort of uses Signals as a compiler hint too for the template compiler).
 
@@ -400,8 +417,6 @@ Note: You may pick if you want to use Angular or React (or both if you're a star
 - No manual DOM manipulation needed
 - Uses the "brains" of the framework to decide when state reflection is needed
 - Great developer experience
-
-// TODO Bjorn - Exercise 3 solution
 
 Note: Ask participants to explain their solution (one of each). Show the group the difference between Angular and React.
 

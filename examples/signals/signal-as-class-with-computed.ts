@@ -36,6 +36,8 @@ class Signal<T> {
       notifySubscriber,
     });
 
+    notifySubscriber(this._value);
+
     return {
       unsubscribe: () => {
         this._subscribers = this._subscribers.filter((s) => s.id !== id);

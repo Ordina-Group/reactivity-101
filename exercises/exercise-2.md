@@ -5,8 +5,7 @@ _Re-use your previous Stackblitz link, or create a new fork if you like. Make su
 Try to use and consume your Signal.
 
 - Can you set a value?
-- Can you change the value over time? (`setInterval`, `setTimeout`)
-  - On user action? `<button> ?`
+- Can you change the value on user interaction? `<button> ?`
 - Can you make a counter?
 - Can you reflect the changes in the HTML when the Signal changes?
   - Hint: use `document.getELementById('...').innerHTML = 'new content'` to update the content on a page.
