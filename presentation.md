@@ -410,7 +410,7 @@ Note: Reactive current state – When I want other parts of the application to l
 
 ... RxJS for example 🧐
 
-(CycleJS, BaconJS, etc.)
+(CycleJS, BaconJS, MostJS, etc.)
 
 Note: Could also be Promises (native), browser Observables (early stage). RxJS: Only Angular comes with this pre-packaged, and is the only framework that has internal competition for this.
 
@@ -423,27 +423,32 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 // TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
 
 ---
+
 ## What is RxJS?
 
-- Reactive programming in the Frontend
-- A better way to manage data and events within your app.
+- A better way to manage events within your app.
+- More powerful then Signals, but way more options.
 
 ---
 
-## Why RxJS?
+## Observable Pattern
 
-- Better readable code 🤓
-- Data flow 🌊
-- Easier and safer data transformations 🤖
-- Functional and Reactive (!) 🙌
+- What is an Observable?
+- What is a Subject?
+
+// TODO - Fix me!
 
 ---
 
-## What do you use RxJS for?
+## RxJS Interop (Angular)
 
-- Streaming data, (i.e. WebSockets)
-- Games
-- Communicating between application components
+```ts
+import { toSignal, toObservable } from '@angular/core/rxjs-interop'
+
+const signal = toSignal(observable$) // From Observable stream to Signal (only current value)
+
+const obs$ = toObservable(signal) // From Signal current value to a stream of Values over time.
+```
 
 ---
 
@@ -459,7 +464,7 @@ locationUpdates.subscribe((newShipLocation) => {
 ```
 
 ---
-
+<!-- 
 #### Games
 
 ```ts
@@ -468,11 +473,13 @@ const frames = interval(this.fpsMs).pipe(map(() => "frame"));
 const seconds = interval(1000).pipe(map(() => "second"));
 
 this.update$ = merge(ticks, frames, seconds).share();
-```
+``` -->
 
 ---
 
 #### Communicating between application components
+
+// TODO - Show the difference with a Signal example doing the same.
 
 Service
 
@@ -523,15 +530,13 @@ export class Component {
 
 - Implementation of the Observable pattern in Javascript
 - Used heavily by `Angular`
-- Lots of adoption in libraries like
-  - `Redux-observable`
-  - `VueRx`
-- Java/Scala also have their implementation.
-
-#### 🤩 So plenty of stuff to have fun with! 🤩
+- Java/Scala also have their implementation. 
+ 
+Note: Will be zoomed in more in the FP Days given by our colleagues. 
 
 ---
 
+// TODO - Bonus?
 // TODO: add short explaination of basic operators
 
 // TODO: simple exercise(s) should follow; maybe handling user events, debounce input value changes? To demonstrate the limitations of Signals and the POWAHH of Observables?
