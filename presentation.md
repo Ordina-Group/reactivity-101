@@ -562,13 +562,16 @@ const obs$ = toObservable(signal) // From Signal current value to a stream of Va
 ```ts
 const locationUpdates = webSocket("ws://some-live-shiplocation-api");
 
-locationUpdates.subscribe((newShipLocation) => {
-  // update UI with new location i.e.
-  this.state.shiplocation = newShipLocation;
-});
-``` 
-
-// TODO Add operator or more "lively" example - Show what we can do more with Rx in comparison. Debounce, Buffer, Filter? 
+locationUpdates
+  .pipe(
+    filter(location => location.port === 'rotterdam'),
+    debounceTime(500)
+  )
+  .subscribe((newShipLocation) => {
+    // update UI with new location i.e.
+    this.state.shiplocation = newShipLocation;
+  });
+```
 
 ---
 
