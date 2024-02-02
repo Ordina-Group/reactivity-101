@@ -266,9 +266,9 @@ Note: Point 3: WriteableSignal vs. ComputedSignal.
 
 ---
 
-### Exercise 1
+## Exercise 1
 
-Write your own Signal!
+### Write your own Signal!
 
 Note: Take 20 minutes for this by default. Depending on the group; discuss approach first, or give hints.
 
@@ -316,7 +316,7 @@ Note: Show & Tell, what worked, what was difficult? Optionally show an example s
 
 ---
 
-## What do frameworks do for us?
+## What do frameworks<br />do for us?
 
 Note: Now you've written a (partial) signal yourself, you can imagine the complications it involves. And why every framework has their own. 
 
@@ -349,6 +349,7 @@ Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This
 ## Different types of Signals
 
 // TODO: discuss if this is the correct timing
+
 // TODO: maybe add code examples?
 
 - Writable
@@ -390,9 +391,10 @@ Note: Discuss, ask group about when to use a Signal and when not to use it.
 
 ## When to use a Signal?
 
-- ...
-- ...
-- ...
+- Reactive current state (Unidirectional flow)
+- Granular change detection (Framework)
+
+Note: Reactive current state – When I want other parts of the application to listen to my values, without the values being aware of who is listening. (Unidirectional flow), Change Detection - No memory leaks with Subscriptions, and no dirty checking within the framework.
 
 ----
 
@@ -400,13 +402,17 @@ Note: Discuss, ask group about when to use a Signal and when not to use it.
 
 - Handling (user events)
 - Values over time (streams)
-- Continous stream of data (chats)
+- Continous stream of data (immutability)
 
 ----
 
 ## Wait?! What should I use then???
 
-... RxJS 🧐
+... RxJS for example 🧐
+
+(CycleJS, BaconJS, etc.)
+
+Note: Could also be Promises (native), browser Observables (early stage). RxJS: Only Angular comes with this pre-packaged, and is the only framework that has internal competition for this.
 
 ----
 
@@ -527,5 +533,6 @@ export class Component {
 ---
 
 // TODO: add short explaination of basic operators
+
 // TODO: simple exercise(s) should follow; maybe handling user events, debounce input value changes? To demonstrate the limitations of Signals and the POWAHH of Observables?
 
