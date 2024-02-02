@@ -513,18 +513,6 @@ locationUpdates.subscribe((newShipLocation) => {
 // TODO Add operator or more "lively" example - Show what we can do more with Rx in comparison. Debounce, Buffer, Filter? 
 
 ---
-<!-- 
-#### Games
-
-```ts
-const ticks = interval(this.tickMs).pipe(map(() => "tick"));
-const frames = interval(this.fpsMs).pipe(map(() => "frame"));
-const seconds = interval(1000).pipe(map(() => "second"));
-
-this.update$ = merge(ticks, frames, seconds).share();
-``` -->
-
----
 
 #### Communicating between application components
 
@@ -535,6 +523,7 @@ Service
 ```ts
 export class EventBusService {
   private events = new Subject<Event>();
+  latestEvent: Signal<Event | undefined> = toSignal(this.events) // Events does not always contain a value!!!
 
   getEvents(): Observable<Event> {
     return this.events.asObservable();
@@ -546,32 +535,28 @@ export class EventBusService {
 }
 ```
 
+Note: We can keep the most recent event in a Signal, but we cannot emulate a stream of Events like we can with RxJS. This is the difference :).
+
 ---
 
-#### Communicating between application components
-
-// TODO: maybe tell here that Signals are a abstraction / kind of BehaviourSubject? and maybe rewrite example below to use BehaviourSubject instead?
-
-Component
+#### Communicating between application components and service
 
 ```ts
 export class Component {
   constructor(private eventsService: EventBusService) {
-    this.eventsService
-      .getEvents()
-      .filter((event) => event.type === "InterestingEvent")
-      .subscribe(this.handleEvents);
+    const mostRecentInterestingEvent = toSignal(this.eventsService
+      .getEvents().pipe(
+        .filter((event) => event.type === "InterestingEvent"))
+      )
   }
 
   doAction(): void {
     this.eventsService.sendEvent(new TestEvent());
   }
-f
-  handleEvents(event: Event) {
-    //... do things
-  }
 }
 ```
+
+Note: This is an interesting example. This could be a nice "cooperation" of Signals and RxJS. Where at the boundary of the service, where you consume a stream, you can convert it to a Signal of values you are interested in.
 
 ---
 
