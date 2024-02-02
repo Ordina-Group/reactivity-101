@@ -475,7 +475,7 @@ Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article 
 - More powerful then Signals, but way more options.
 - Applies the Observable pattern in Javascript.
 
----
+----
 
 ## Observable Pattern
 
@@ -486,7 +486,7 @@ What is an Observable?
 - Unlike a newsletter, it won't send anything until at least someone has a subscription.
 - You can use operators on it, to get the parts you are interested in.
 
----
+----
 
 ```ts
 const someValue$ = from('some value')
@@ -496,7 +496,7 @@ someValue$.subscribe(value => {
 })
 ```
 
----
+----
 
 ## Observable Pattern
 
@@ -506,7 +506,7 @@ What is a Subject?
 - Value could be changed over time, just like a Signal, but without initial value
 - With all the benefits of an Observable
 
----
+----
 
 ```ts
 const subject$ = new Subject()
@@ -521,7 +521,7 @@ subject$.subscribe(value => {
 })
 ```
 
----
+----
 
 ## Observable Pattern
 
@@ -531,7 +531,7 @@ What is a BehaviorSubject?
 - Emits the current (initial) value immediately on subscribe
 - Basically a Signal
 
----
+----
 
 ```ts
 const behaviorSubject$ = new BehaviorSubject('initial value')
@@ -543,7 +543,7 @@ behaviorSubject$.subscribe(value => {
 behaviorSubject$.next('my behavior subject')
 ```
 
----
+----
 
 ## RxJS Interop (Angular)
 
@@ -555,7 +555,7 @@ const signal = toSignal(observable$) // From Observable stream to Signal (only c
 const obs$ = toObservable(signal) // From Signal current value to a stream of Values over time.
 ```
 
----
+----
 
 #### Streaming data
 
@@ -573,7 +573,7 @@ locationUpdates
   });
 ```
 
----
+----
 
 #### Communicating between application components
 
@@ -598,7 +598,7 @@ export class EventBusService {
 
 Note: We can keep the most recent event in a Signal, but we cannot emulate a stream of Events like we can with RxJS. This is the difference :).
 
----
+----
 
 #### Communicating between application components and service
 
@@ -619,7 +619,7 @@ export class Component {
 
 Note: This is an interesting example. This could be a nice "cooperation" of Signals and RxJS. Where at the boundary of the service, where you consume a stream, you can convert it to a Signal of values you are interested in.
 
----
+----
 
 ### So, RxJS?
 
