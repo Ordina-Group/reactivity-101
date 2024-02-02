@@ -571,10 +571,6 @@ locationUpdates
 
 #### Communicating between application components
 
-// TODO - Show the difference with a Signal example doing the same.
-
-Service
-
 ```ts
 export class EventBusService {
   private events = new Subject<Event>();
@@ -625,8 +621,59 @@ Note: Will be zoomed in more in the FP Days given by our colleagues.
 
 ---
 
-// TODO Exercise 5, 6 ? Give an RxJS stream of range 0..100, exercise is to filter only the even values. Show in both RxJS stream (filter) and as a Signal (computed with if statement)
+## Exercise 4
 
+Combine RxJS and Signals, write a filter and/or a computed to retrieve data you want.
+
+---
+
+## Summary
+
+- Reactive & Declarative programming
+- Seen how a Signal could work
+- Signals are easy and readable to use
+- Signals are Framework native and optimized
+- Almost every modern Framework has a similar solution
+- RxJS and other Streaming solutions are more powerful for advanced applications
+
+----
+
+## Make your code reactive
+
+Write declaratively
+
+Don't overcomplicate too early
+
+---
+
+### Reactivity 101
+
+<div style="float: left; width: 45%;">
+  <img src="./assets/bjorn.jpg" width="100" style="border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Bjorn Schijff</h1>
+  <small style="display: inline-flex;">Frontend Engineer / Architect</small>
+  <div>
+  	<img src="./assets/codestar.svg" height="30" style="border: 0; background-color: transparent;">
+  </div>
+  <small>@Bjeaurn</small>
+  <br />
+  <small>bjorn.schijff@ordina.nl</small>
+</div>
+<div style="float: right; width: 45%;">
+  <img src="./assets/martin.jpg" width="100" style="border-radius:100%; display: inline-flex;">
+  <h1 style="font-size: 0.9em;">Martin van Dam</h1>
+  <small>Frontend Engineer / Architect</small>
+  <div>
+    <img src="./assets/codestar.svg" height="30" style="border: 0; background-color: transparent; position: relative" /> 
+  </div>
+  <small>@MrtnvDam</small>
+  <br />
+  <small>martin.van.dam@ordina.nl</small>
+</div>
+
+Note: Thanks for attending Reactivity 101!
+
+---
 
 // TODO - Bonus?
 // TODO: add short explaination of basic operators
@@ -636,8 +683,3 @@ Note: Will be zoomed in more in the FP Days given by our colleagues.
 // TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
 
 ---
-
-#### Verdict
-
-- Use Signals for ...
-- Use Observables for ...

@@ -1,9 +1,9 @@
-# Exercise 5 - Convert Signals to Observables
+# (BONUS) Exercise 6 - Convert Signals to Observables
 
 ## Use Observables instead of Signals to make life easier
 
 ```ts
-const state = signal({
+const stat4e = signal({
   loading: false,
   data: null,
   error: null,
