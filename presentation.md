@@ -461,12 +461,6 @@ Note: Could also be Promises (native), browser Observables (early stage). RxJS: 
 
 Note: https://dev.to/ducin/signals-are-values-not-events-10bn - example article talking and touching about these points.
 
-// TODO More to brief? Where to draw the line? When to combine/group values in an Object and use that in the signal. This is more state management then "Signals"...
-
-// TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
-
-// Kan weg??? 
-
 ---
 
 ## What is RxJS?
@@ -638,6 +632,8 @@ Note: Will be zoomed in more in the FP Days given by our colleagues.
 // TODO: add short explaination of basic operators
 
 // TODO: simple exercise(s) should follow; maybe handling user events, debounce input value changes? To demonstrate the limitations of Signals and the POWAHH of Observables?
+
+// TODO Exercise where we have an imperative (Angular?) example; rewrite it using Signals, make it more reactive, refactor. 20 minutes?
 
 ---
 
