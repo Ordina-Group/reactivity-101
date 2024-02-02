@@ -343,16 +343,48 @@ Note: Some frameworks, like Svelte, use Signals(/Runes) as a compiler hint. This
 
 ## Different types of Signals
 
-// TODO: discuss if this is the correct timing
-
-// TODO: maybe add code examples?
-
-// TODO Martin
-
 - Writable
-- Computable
+- Computable & Readonly
 - Effects
 
+----
+
+## Writable Signal
+
+```ts
+const count = signal(0)
+signal.update(currentValue => currentValue + 1)
+```
+
+----
+
+## Computable Signal & Readonly
+
+```ts
+const count = signal(2)
+const multiply = computed(() => count() * 2)
+count.set(3)
+
+const readonlyCount = count.asReadonly()
+```
+
+Note: the computed Signal is readonly because it only reacts on its dependencies. Readonly Signals could be useful to expose from services and to be sure no values are updated on other places; predictable data flow.
+
+----
+
+## Effects
+
+```ts
+const count = signal(2)
+effect(() => {
+  console.log(`The value of count changed to: ${count()}`)
+  window.localStorage.setItem('count', count())
+})
+
+count.set(3)
+```
+
+Note: useful for side effects, logging, manipulate localStorage, ...
 ---
 
 ## Exercise 3
@@ -519,7 +551,7 @@ export class Component {
   doAction(): void {
     this.eventsService.sendEvent(new TestEvent());
   }
-
+f
   handleEvents(event: Event) {
     //... do things
   }
@@ -546,3 +578,9 @@ Note: Will be zoomed in more in the FP Days given by our colleagues.
 
 // TODO: simple exercise(s) should follow; maybe handling user events, debounce input value changes? To demonstrate the limitations of Signals and the POWAHH of Observables?
 
+---
+
+#### Verdict
+
+- Use Signals for ...
+- Use Observables for ...
