@@ -29,11 +29,19 @@ title: 'Reactive Programming in the Frontend'
   <small>martin.van.dam@ordina.nl</small>
 </div>
 
+Note: Maybe mention this is our first time giving this exact training, which ties in with the next slide about "Why" we do this one and have stopped with RxJS 101.
+
+---
+
+Why do we talk about Reactivity?
+
+Note: RxJS is default (still) in Angular, but almost every major framework has some sort of reactive paradigm to react to values changing (over time) and keeping state. Reactivity is a major factor in that area.
+
 ---
 
 What is Reactivity?
 
-Note: What is reactivity? What is reactive programming?
+Note: What is reactivity? What is reactive programming? [DISCUSS]
 
 ----
 
@@ -154,7 +162,7 @@ Note: A declarative example. We write the "recipe" and every definition has its 
 
 **Data Streams**
 
-You could consider a Signal to be a stream of values that change over time. 
+You could consider a Signal to be a current state of values that change over time (as a stream).
 
 ```ts
 count = signal(0)
@@ -293,6 +301,12 @@ Note: After this exercise, take a look around. Show & Tell and discussion about 
 
 ---
 
+## Review exercise 1 
+
+Note: Show'n'tell working solutions, make sure everybody has at least a working example (see /examples/) of a self-made Signal to partipate in exercise 2.
+
+---
+
 ## Exercise 2
 ### Signal Interaction
 
@@ -401,7 +415,8 @@ effect(() => {
 count.set(3)
 ```
 
-Note: useful for side effects, logging, manipulate localStorage, ...
+Note: useful for side effects, logging, manipulate localStorage, etc. Basically a computed without a returning new signal to be observed. (Hard to detect when it is no longer being used?)
+
 ---
 
 ## Exercise 3
@@ -483,7 +498,9 @@ What is an Observable?
 ----
 
 ```ts
-const someValue$ = from('some value')
+import { of } from 'rxjs'
+
+const someValue$ = of('some value')
 
 someValue$.subscribe(value => {
   console.log(value) // 'some value'
@@ -514,6 +531,8 @@ subject$.subscribe(value => {
   console.log(value) // 'my subject
 })
 ```
+
+Note: What if we did not do the line 2 subject.next? You can't do that in a Signal, it REQUIRES a default value. Here is the difference between Signals and Observables.
 
 ----
 
@@ -548,6 +567,8 @@ const signal = toSignal(observable$) // From Observable stream to Signal (only c
 
 const obs$ = toObservable(signal) // From Signal current value to a stream of Values over time.
 ```
+
+Note: Angular provides an interop between Observables and Signals, so you can use the best of both worlds in your Angular applications.
 
 ----
 
@@ -586,7 +607,7 @@ export class EventBusService {
 }
 ```
 
-Note: We can keep the most recent event in a Signal, but we cannot emulate a stream of Events like we can with RxJS. This is the difference :).
+Note: Compare the situation here with both the Signal and the Observable stream. We can keep the most recent event in a Signal, but we cannot emulate a stream of Events like we can with RxJS. This is the difference :). (Also note the .asObservable(), readonly Subject -> Observable)
 
 ----
 
@@ -595,9 +616,11 @@ Note: We can keep the most recent event in a Signal, but we cannot emulate a str
 ```ts
 export class Component {
   constructor(private eventsService: EventBusService) {
-    const mostRecentInterestingEvent = toSignal(this.eventsService
-      .getEvents().pipe(
-        .filter((event) => event.type === "InterestingEvent"))
+    const mostRecentInterestingEvent = toSignal(
+      this.eventsService.getEvents()
+          .pipe(
+            filter((event) => event.type === "InterestingEvent")
+          )
       )
   }
 
@@ -617,7 +640,7 @@ Note: This is an interesting example. This could be a nice "cooperation" of Sign
 - Used heavily by `Angular`
 - Java/Scala also have their implementation. 
  
-Note: Will be zoomed in more in the FP Days given by our colleagues. 
+Note: Will be zoomed in more in the FP Days given by our colleagues (Observable and Reactive Patterns, not necessarily RxJS). 
 
 ---
 
@@ -671,7 +694,7 @@ Don't overcomplicate too early
   <small>martin.van.dam@ordina.nl</small>
 </div>
 
-Note: Thanks for attending Reactivity 101!
+Note: Thanks for attending Reactivity 101! Please feel free to share feedback or come back to us with additional questions!
 
 ---
 
